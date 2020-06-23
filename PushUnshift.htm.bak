@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>Adding elements dynamically </TITLE>
+<script>
+var cities=new Array("delhi","mumbai","goa","chennai");
+
+function bodyload()
+{
+	var lstCities=document.getElementById("lstCities");
+	for(var i=0;i<=cities.length;i++)
+	{
+		var opt=document.createElement("option");
+		opt.text=cities[i];
+		opt.value=cities[i];
+		lstCities.appendChild(opt);
+	}
+}
+function Push()
+{
+	var city=document.getElementById("txtCity").value;
+	cities.push(city);
+	alert(city+ "Added as last item. ");
+
+	document.getElementById("lstCities").innerHTML=" ";
+	bodyload();
+	document.getElementById("txtCity").value=" ";
+	document.getElementById("count").innerHTML="Total number of cities: "+cites.length;
+}
+</script>
+</HEAD>
+
+<BODY onload="bodyload()">
+<div>
+<form>
+<fieldset>
+<legend>Add cities</legend>
+City name:
+<input type="text" id="txtCity" >
+<input type="button" value="Push" onclick="Push()">
+<!-- <input type="button" value="Unshift" onclick="Unshift()"> -->
+</fieldset>
+<br>
+<fieldset>
+<legend>Cities list</legend>
+<select id="lstCities">
+</select>
+<span id="count"></span>
+</fieldset>
+</form>
+</div>
+</BODY>
+</HTML>
